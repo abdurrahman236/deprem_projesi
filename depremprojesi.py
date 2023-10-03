@@ -68,5 +68,5 @@ while True:
         tarih = input("Hangi tarihteki deprem sayısını öğrenmek istiyorsunuz:(yıl/ay/gün şeklinde yazınız.) ")
         deprem.tarihteki_deprem_sayisi(tarih=tarih)
     else:
-        print("Yanlış seçim lütfen 1 ile 5 arasında bir sayı seçiniz.")
+        print("Yanlış seçim lütfen 1 ile 6 arasında bir sayı seçiniz.")
         
