@@ -48,13 +48,21 @@ class Deprem:
         for deprem in depremler:
             depremler_.append(deprem['tarih'])
         print(depremler_.count(tarih))
+    
+    def deprem_buyuklugu(self):
+        response = requests.get(self.api_url)
+        buyuklukler = response.json()['data']
+        buyuklukler_ = []
+        for buyukluk in buyuklukler:
+            buyuklukler_.append(buyukluk['ml'])
+        print(buyuklukler_[self.index])
             
 deprem = Deprem()
 
 while True:
-    secim = input("1-son deprem tarihi\n2-son deprem saati\n3-son depremin derinliği\n4-son depremin oldugu yer\n5-hangi tarihteki toplam deprem sayısını ogrenmek istiyorsunuz\n6-exit\nSeciminiz: ")
+    secim = input("1-son deprem tarihi\n2-son deprem saati\n3-son depremin derinliği\n4-son depremin oldugu yer\n5-hangi tarihteki toplam deprem sayısını ogrenmek istiyorsunuz\n6-depremin büyüklüğü\n7-exit\nSeciminiz: ")
     
-    if secim == '6':
+    if secim == '7':
         break
     elif secim == '1':
         deprem.deprem_tarihi()
@@ -67,6 +75,8 @@ while True:
     elif secim == '5':
         tarih = input("Hangi tarihteki deprem sayısını öğrenmek istiyorsunuz:(yıl/ay/gün şeklinde yazınız.) ")
         deprem.tarihteki_deprem_sayisi(tarih=tarih)
+    elif secim == '6':
+        deprem.deprem_buyuklugu()
     else:
-        print("Yanlış seçim lütfen 1 ile 6 arasında bir sayı seçiniz.")
+        print("Yanlış seçim lütfen 1 ile 7 arasında bir sayı seçiniz.")
         
